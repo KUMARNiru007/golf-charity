@@ -65,7 +65,7 @@ export default function AuthPage() {
     <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/8 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-emerald-500/8 blur-[120px] rounded-full" />
       </div>
 
       <motion.div

@@ -37,7 +37,9 @@ export default function DashboardOverview() {
   };
 
   if (!user) return null;
-  const avg = scores.length > 0 ? Math.round(scores.reduce((s, r) => s + r.score, 0) / scores.length) : null;
+  const avg = scores.length > 0
+    ? Math.round(scores.reduce((s, r) => s + r.score, 0) / scores.length)
+    : null;
 
   return (
     <div className="space-y-8">
@@ -52,7 +54,7 @@ export default function DashboardOverview() {
             <Card className="glass-card border-white/5">
               <CardContent className="pt-5">
                 <div className="text-sm text-zinc-500 mb-1">{s.label}</div>
-                <div className={`text-3xl font-display font-bold font-mono capitalize ${s.color}`}>{String(s.value)}</div>
+                <div className={`text-3xl font-mono font-bold capitalize ${s.color}`}>{String(s.value)}</div>
                 <div className="text-xs text-zinc-600 mt-1">{s.sub}</div>
               </CardContent>
             </Card>
@@ -68,14 +70,18 @@ export default function DashboardOverview() {
               <CardTitle className="font-display">Recent Performance</CardTitle>
               <CardDescription>Your last {scores.length} Stableford scores</CardDescription>
             </div>
-            <Button asChild size="sm" className="bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20">
-              <Link href="/dashboard/scores"><PlusCircle className="h-4 w-4 mr-1" /> Add Score</Link>
-            </Button>
+            <Link
+              href="/dashboard/scores"
+              className="inline-flex items-center gap-1 text-sm bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20 px-3 py-1.5 rounded-lg transition-all"
+            >
+              <PlusCircle className="h-4 w-4" /> Add Score
+            </Link>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               {scores.length > 0 ? scores.map((score, i) => (
-                <motion.div key={score.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
+                <motion.div key={score.id}
+                  initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
                   className="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all">
                   <div className="flex items-center gap-4">
                     <div className="w-11 h-11 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg">
@@ -83,7 +89,9 @@ export default function DashboardOverview() {
                     </div>
                     <div>
                       <div className="font-medium text-sm">Stableford Round</div>
-                      <div className="text-xs text-zinc-500 font-mono">{new Date(score.date).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}</div>
+                      <div className="text-xs text-zinc-500 font-mono">
+                        {new Date(score.date).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}
+                      </div>
                     </div>
                   </div>
                   <TrendingUp className="h-4 w-4 text-emerald-500/40" />
@@ -92,9 +100,12 @@ export default function DashboardOverview() {
                 <div className="text-center py-12 text-zinc-500">
                   <Trophy className="h-10 w-10 mx-auto mb-3 text-zinc-700" />
                   <p className="italic mb-4">No scores entered yet.</p>
-                  <Button asChild size="sm" className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <Link href="/dashboard/scores">Enter your first score</Link>
-                  </Button>
+                  <Link
+                    href="/dashboard/scores"
+                    className="inline-flex items-center gap-1 text-sm bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1.5 rounded-lg transition-all"
+                  >
+                    Enter your first score
+                  </Link>
                 </div>
               )}
             </div>
@@ -117,9 +128,12 @@ export default function DashboardOverview() {
                 <div className="text-xs text-zinc-500 mb-1 uppercase tracking-wider">Contribution</div>
                 <div className="font-bold text-lg text-emerald-400 font-mono">{profile?.charity_percentage ?? 10}%</div>
               </div>
-              <Button asChild variant="outline" className="w-full border-white/10 hover:bg-white/5 text-sm">
-                <Link href="/dashboard/charity">{selectedCharity ? "Change Charity" : "Select Charity"}</Link>
-              </Button>
+              <Link
+                href="/dashboard/charity"
+                className="inline-flex items-center justify-center w-full border border-white/10 hover:bg-white/5 text-sm px-3 py-2 rounded-lg transition-all text-zinc-300"
+              >
+                {selectedCharity ? "Change Charity" : "Select Charity"}
+              </Link>
             </CardContent>
           </Card>
 
@@ -136,10 +150,14 @@ export default function DashboardOverview() {
               </div>
               <div>
                 <div className="text-xs text-zinc-500 mb-1 uppercase tracking-wider">Renewal</div>
-                <div className="font-mono text-sm">{profile?.renewal_date ? new Date(profile.renewal_date).toLocaleDateString("en-US") : "N/A"}</div>
+                <div className="font-mono text-sm">
+                  {profile?.renewal_date ? new Date(profile.renewal_date).toLocaleDateString("en-US") : "N/A"}
+                </div>
               </div>
-              <Button className="w-full bg-zinc-800 hover:bg-zinc-700 text-white text-sm"
-                onClick={() => toast.info("Billing portal coming soon.")}>
+              <Button
+                className="w-full bg-zinc-800 hover:bg-zinc-700 text-white text-sm"
+                onClick={() => toast.info("Billing portal coming soon.")}
+              >
                 Manage Billing
               </Button>
             </CardContent>

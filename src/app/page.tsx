@@ -23,13 +23,13 @@ export default function LandingPage() {
               <AvatarFallback>{initial}</AvatarFallback>
             </Avatar>
           ) : (
-            <Button asChild variant="outline" size="sm" className="rounded-full border-zinc-700 hidden sm:flex">
-              <Link href="/auth">Sign In</Link>
-            </Button>
+            <Link href="/auth" className="inline-flex items-center gap-2 text-sm rounded-full border border-zinc-700 hidden sm:flex px-3 py-2 transition-all">
+              Sign In
+            </Link>
           )}
-          <Button asChild variant="neon" size="sm" className="rounded-full">
-            <Link href={user ? "/dashboard" : "/auth"}>Get Started</Link>
-          </Button>
+          <Link href={user ? "/dashboard" : "/auth"} className="inline-flex items-center gap-2 text-sm rounded-full bg-emerald-500 text-zinc-950 font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:bg-emerald-400 transition-all duration-300 px-3 py-2">
+            Get Started
+          </Link>
         </div>
       </nav>
 
@@ -46,36 +46,29 @@ export default function LandingPage() {
             </span>
             <h1 className="text-6xl md:text-8xl font-display font-bold tracking-tight mb-8 leading-[0.9]">
               PLAY GOLF.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">WIN PRIZES.</span><br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-blue-500">WIN PRIZES.</span><br />
               GIVE BACK.
             </h1>
             <p className="max-w-2xl mx-auto text-zinc-400 text-lg md:text-xl mb-10 leading-relaxed">
               A subscription-driven platform combining performance tracking, monthly prize draws, and seamless charitable giving.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                asChild
-                variant="neon"
-                size="lg"
-                className="h-14 px-10 text-base rounded-full flex items-center gap-2 font-semibold shadow-lg hover:scale-[1.03] transition-transform duration-150"
+              <Link
+                href={user ? "/dashboard" : "/auth"}
+                className="inline-flex items-center gap-2 text-base h-14 px-10 rounded-full font-semibold shadow-lg hover:scale-[1.03] transition-transform duration-150 bg-emerald-500 text-zinc-950"
               >
-                <Link
-                  href={user ? "/dashboard" : "/auth"}
-                  className="flex items-center gap-2 w-full justify-center"
-                >
-                  <span>Get Started</span>
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-zinc-800 hover:bg-zinc-900 rounded-full">
-                <Link href="/charities">Explore Charities</Link>
-              </Button>
+                <span>Get Started</span>
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link href="/charities" className="inline-flex items-center gap-2 text-base h-14 px-8 border border-zinc-800 hover:bg-zinc-900 rounded-full transition-all">
+                Explore Charities
+              </Link>
             </div>
           </motion.div>
         </div>
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2">
-          <div className="w-px h-12 bg-gradient-to-b from-emerald-500/50 to-transparent mx-auto" />
+          <div className="w-px h-12 bg-linear-to-b from-emerald-500/50 to-transparent mx-auto" />
         </motion.div>
       </section>
 
@@ -149,31 +142,31 @@ export default function LandingPage() {
               <div className="text-xs text-zinc-500 uppercase tracking-widest mb-2">Monthly</div>
               <div className="text-4xl font-display font-bold mb-1">£9.99<span className="text-lg text-zinc-500 font-normal">/mo</span></div>
               <p className="text-zinc-500 text-sm mt-4">Full access. Cancel anytime.</p>
-              <Button asChild className="w-full mt-6 bg-white/5 hover:bg-white/10 border border-white/10">
-                <Link href="/subscribe?plan=monthly">Choose Monthly</Link>
-              </Button>
+              <Link href="/subscribe?plan=monthly" className="inline-flex items-center gap-2 w-full mt-6 bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-2 rounded-lg transition-all">
+                Choose Monthly
+              </Link>
             </div>
             <div className="glass-card p-8 text-left border-emerald-500/30 relative overflow-hidden hover:border-emerald-500/50 transition-all">
               <div className="absolute top-4 right-4 bg-emerald-500 text-zinc-950 text-xs font-bold px-2 py-0.5 rounded-full">SAVE 20%</div>
               <div className="text-xs text-zinc-500 uppercase tracking-widest mb-2">Yearly</div>
               <div className="text-4xl font-display font-bold mb-1">£95.88<span className="text-lg text-zinc-500 font-normal">/yr</span></div>
               <p className="text-zinc-500 text-sm mt-4">Two months free vs monthly.</p>
-              <Button asChild variant="neon" className="w-full mt-6">
-                <Link href="/subscribe?plan=yearly">Choose Yearly</Link>
-              </Button>
+              <Link href="/subscribe?plan=yearly" className="inline-flex items-center gap-2 w-full mt-6 bg-emerald-500 text-zinc-950 font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:bg-emerald-400 transition-all duration-300 px-3 py-2 rounded-lg">
+                Choose Yearly
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-32 px-6 bg-gradient-to-b from-zinc-950 to-emerald-950/20">
+      <section className="py-32 px-6 bg-linear-to-b from-zinc-950 to-emerald-950/20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready to join the club?</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready to join the club?</h2>
           <p className="text-zinc-400 text-lg mb-12">Choose a plan that fits your game and start making a difference today.</p>
-          <Button asChild variant="neon" size="lg" className="h-16 px-12 text-lg rounded-full">
-            <Link href="/subscribe">Get Started Now</Link>
-          </Button>
+          <Link href="/subscribe" className="inline-flex items-center gap-2 text-lg h-16 px-12 rounded-full bg-emerald-500 text-zinc-950 font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:bg-emerald-400 transition-all duration-300">
+            Get Started Now
+          </Link>
         </div>
       </section>
 

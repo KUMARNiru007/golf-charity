@@ -76,7 +76,7 @@ export default function AdminWinnersPage() {
               {loading ? <TableRow><TableCell colSpan={7} className="text-center py-10 text-zinc-500">Loading…</TableCell></TableRow>
               : winners.length === 0 ? <TableRow><TableCell colSpan={7} className="text-center py-10 text-zinc-500 italic">No winners in this category.</TableCell></TableRow>
               : winners.map(w => (
-                <TableRow key={w.id} className="border-white/5 hover:bg-white/[0.02]">
+                <TableRow key={w.id} className="border-white/5 hover:bg-white/2">
                   <TableCell>
                     <div className="text-sm font-medium">{w.profiles?.full_name ?? "Unknown"}</div>
                     <div className="text-xs text-zinc-500 font-mono">{w.profiles?.email ?? "—"}</div>

@@ -97,14 +97,14 @@ export default function AdminCharitiesPage() {
             <TableBody>
               {loading ? <TableRow><TableCell colSpan={4} className="text-center py-10 text-zinc-500">Loading…</TableCell></TableRow>
               : charities.map(c => (
-                <TableRow key={c.id} className="border-white/5 hover:bg-white/[0.02]">
+                        <TableRow key={c.id} className="border-white/5 hover:bg-white/2">
                   <TableCell className="font-medium text-sm">{c.name}</TableCell>
                   <TableCell className="text-xs text-zinc-500 max-w-xs truncate">{c.description}</TableCell>
                   <TableCell>{c.featured ? <Badge variant="outline" className="text-xs border-emerald-500/30 text-emerald-400">Featured</Badge> : <span className="text-xs text-zinc-600">—</span>}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="ghost" onClick={() => openEdit(c)} className="h-7 w-7 p-0 text-zinc-400 hover:text-white"><Pencil className="h-3.5 w-3.5" /></Button>
-                      <Button size="sm" variant="ghost" onClick={() => remove(c.id)} disabled={deleting === c.id} className="h-7 w-7 p-0 text-zinc-600 hover:text-red-400"><Trash2 className="h-3.5 w-3.5" /></Button>
+                      <Button size="sm" variant="ghost" onClick={() => openEdit(c)} className="h-7 w-7 p-0 text-zinc-400 hover:text-white"><Pencil className="h-3 w-3.5" /></Button>
+                      <Button size="sm" variant="ghost" onClick={() => remove(c.id)} disabled={deleting === c.id} className="h-7 w-7 p-0 text-zinc-600 hover:text-red-400"><Trash2 className="h-3 w-3.5" /></Button>
                     </div>
                   </TableCell>
                 </TableRow>

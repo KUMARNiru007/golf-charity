@@ -56,7 +56,7 @@ export default function DrawsPage() {
 
   return (
     <div className="space-y-8">
-      <Card className="glass-card border-white/5 bg-gradient-to-r from-blue-500/5 to-emerald-500/5">
+      <Card className="glass-card border-white/5 bg-linear-to-r from-blue-500/5 to-emerald-500/5">
         <CardContent className="pt-6 pb-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center shrink-0">
@@ -79,7 +79,7 @@ export default function DrawsPage() {
         ].map(t => (
           <Card key={t.label} className="glass-card border-white/5">
             <CardContent className="pt-5">
-              <div className={`text-2xl font-display font-bold font-mono ${t.color}`}>{t.share}</div>
+                <div className={`text-2xl font-mono font-bold ${t.color}`}>{t.share}</div>
               <div className="font-medium text-sm mt-1">{t.label}</div>
               <div className="text-xs text-zinc-500 mt-0.5">{t.note}</div>
             </CardContent>
@@ -100,7 +100,7 @@ export default function DrawsPage() {
             </TableHeader>
             <TableBody>
               {draws.length > 0 ? draws.map(draw => (
-                <TableRow key={draw.id} className="border-white/5 hover:bg-white/[0.02]">
+                <TableRow key={draw.id} className="border-white/5 hover:bg-white/2">
                   <TableCell className="font-mono text-sm">{formatDate(draw.draw_date)}</TableCell>
                   <TableCell>
                     <div className="flex gap-1.5 flex-wrap">
@@ -132,7 +132,7 @@ export default function DrawsPage() {
             </TableHeader>
             <TableBody>
               {winnings.length > 0 ? winnings.map(w => (
-                <TableRow key={w.id} className="border-white/5 hover:bg-white/[0.02]">
+                <TableRow key={w.id} className="border-white/5 hover:bg-white/2">
                   <TableCell><span className={`font-mono text-sm font-bold ${w.match_type === "5-match" ? "text-yellow-400" : w.match_type === "4-match" ? "text-blue-400" : "text-emerald-400"}`}>{w.match_type}</span></TableCell>
                   <TableCell className="font-mono text-sm text-emerald-400">{formatCurrency(w.prize_amount)}</TableCell>
                   <TableCell>

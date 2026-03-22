@@ -86,15 +86,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Admin panel button — same style as admin's "User Dashboard" button */}
         {isAdmin && (
           <Button
-            asChild
             variant="ghost"
             size="sm"
             className="w-full justify-start gap-2 text-purple-400 hover:text-purple-300 hover:bg-purple-500/10"
+            onClick={() => router.push("/admin")}
           >
-            <Link href="/admin">
-              <ShieldCheck className="h-4 w-4" />
-              Admin Dashboard
-            </Link>
+            <ShieldCheck className="h-4 w-4" />
+            Admin Dashboard
           </Button>
         )}
 

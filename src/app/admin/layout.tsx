@@ -63,15 +63,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </nav>
       <div className="pt-4 border-t border-white/5 space-y-1">
         <Button
-          asChild
           variant="ghost"
           size="sm"
           className="w-full flex items-center gap-2 text-zinc-500 hover:text-emerald-400 hover:bg-emerald-500/10 font-semibold transition-transform duration-150"
+          onClick={() => router.push("/dashboard")}
         >
-          <Link href="/dashboard" className="flex items-center gap-2 w-full">
-            <LayoutDashboard className="h-4 w-4" />
-            <span>User Dashboard</span>
-          </Link>
+          <LayoutDashboard className="h-4 w-4" />
+          <span>User Dashboard</span>
         </Button>
         <Button variant="ghost" size="sm" className="w-full justify-start gap-2 text-zinc-500 hover:text-rose-400 hover:bg-rose-500/10"
           onClick={async () => { await supabase.auth.signOut(); router.push("/auth"); }}>

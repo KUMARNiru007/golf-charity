@@ -1,6 +1,7 @@
+
 "use client";
 import * as React from "react";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -14,7 +15,8 @@ const PLANS = {
   yearly:  { name: "Yearly",  price: "$95.88", period: "/year",  badge: "Save 20%", features: ["Everything in Monthly","2 months free","Priority draw entry","Yearly impact report"] },
 } as const;
 
-export default function SubscribePage() {
+
+function SubscribePage() {
   const params = useSearchParams();
   const [selected, setSelected] = useState<"monthly"|"yearly">((params.get("plan") as "monthly"|"yearly") ?? "monthly");
   const [loading, setLoading] = useState(false);
@@ -60,7 +62,9 @@ export default function SubscribePage() {
                   <div className="text-4xl font-display font-bold">{plan.price}<span className="text-lg text-zinc-500 font-normal">{plan.period}</span></div>
                 </div>
                 <div className="flex flex-col items-end gap-2">
-                  {"badge" in plan && <span className="bg-emerald-500 text-zinc-950 text-xs font-bold px-2 py-0.5 rounded-full">{plan.badge}</span>}
+                  {"badge" in plan && (
+                    <span className="bg-emerald-500 text-zinc-950 text-xs font-bold px-2 py-0.5 rounded-full">{plan.badge}</span>
+                  )}
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${selected === key ? "bg-emerald-500 border-emerald-500" : "border-zinc-600"}`}>
                     {selected === key && <Check className="h-3 w-3 text-zinc-950" />}
                   </div>
@@ -79,19 +83,32 @@ export default function SubscribePage() {
         <div className="text-center">
           {user ? (
             <Button onClick={handleSubscribe} disabled={loading} variant="neon" size="lg" className="h-14 px-16 text-base rounded-full">
-              {loading ? <><Loader2 className="h-5 w-5 mr-2 animate-spin" />Redirecting…</> : `Subscribe — ${PLANS[selected].price}${PLANS[selected].period}`}
+              {loading
+                ? <><Loader2 className="h-5 w-5 mr-2 animate-spin" />Redirecting…</>
+                : `Subscribe — ${PLANS[selected].price}${PLANS[selected].period}`}
             </Button>
           ) : (
             <div className="space-y-3">
               <p className="text-zinc-400">You need an account to subscribe.</p>
-              <Button asChild variant="neon" size="lg" className="h-14 px-16 text-base rounded-full">
-                <Link href="/auth">Create Account or Sign In</Link>
-              </Button>
+              <Link
+                href="/auth"
+                className="inline-flex items-center justify-center h-14 px-16 text-base rounded-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold transition-all"
+              >
+                Create Account or Sign In
+              </Link>
             </div>
           )}
           <p className="text-xs text-zinc-600 mt-4">Secure payments via Stripe. Cancel anytime.</p>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SubscribePageWrapper() {
+  return (
+    <Suspense fallback={null}>
+      <SubscribePage />
+    </Suspense>
   );
 }

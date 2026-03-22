@@ -62,7 +62,7 @@ export default function CharitySelection({ profile }: { profile: UserProfile | n
           <div className="flex items-center gap-4">
             <Input type="number" min={10} max={100} value={pct}
               onChange={e => setPct(Math.max(10, Math.min(100, Number(e.target.value || 10))))}
-              className="max-w-[120px] bg-zinc-900/50 border-white/5 text-center text-xl font-mono font-bold" />
+              className="max-w-30 bg-zinc-900/50 border-white/5 text-center text-xl font-mono font-bold" />
             <span className="text-zinc-400 font-mono">% of subscription</span>
           </div>
         </CardContent>

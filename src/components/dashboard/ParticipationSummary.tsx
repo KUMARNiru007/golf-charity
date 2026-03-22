@@ -42,7 +42,7 @@ export default function ParticipationSummary({ userId }: { userId: string }) {
                 <div className={`w-12 h-12 rounded-2xl ${s.bg} flex items-center justify-center shrink-0`}>{s.icon}</div>
                 <div>
                   <div className="text-xs text-zinc-500 mb-0.5">{s.label}</div>
-                  <div className="text-2xl font-display font-bold font-mono">{s.value}</div>
+                  <div className="text-2xl font-mono font-bold">{s.value}</div>
                   {s.badge && <Badge variant="outline" className="mt-1 text-xs capitalize border-zinc-600 text-zinc-400">{s.badge}</Badge>}
                 </div>
               </div>

@@ -2,13 +2,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { supabase } from "../../lib/supabase";
-import { Charity } from "../../types";
+import { supabase } from "@/lib/supabase";
+import { Charity } from "@/types";
 import Link from "next/link";
 import { Search, Heart, ArrowLeft, Globe, ArrowRight } from "lucide-react";
-import { Input } from "../../components/ui/input";
-import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { toast } from "sonner";
 
 export default function CharitiesPage() {
@@ -91,15 +91,26 @@ export default function CharitiesPage() {
                         <Globe className="h-4 w-4" /> Website
                       </a>
                     ) : <span />}
-                    <Button asChild variant="ghost" className="text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 gap-1">
-                      <Link href="/subscribe">Support <ArrowRight className="h-4 w-4" /></Link>
-                    </Button>
+                    <Link href="/subscribe" className="inline-flex items-center gap-1 text-sm text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 px-3 py-2 rounded-lg transition-all">
+                      Support <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
           </div>
         )}
+      </section>
+
+      <section className="max-w-4xl mx-auto px-6 mt-32 text-center">
+        <div className="p-12 rounded-3xl glass-card">
+          <h2 className="text-3xl font-display font-bold mb-4">Don't see your favourite charity?</h2>
+          <p className="text-zinc-400 mb-8 max-w-xl mx-auto">We're constantly adding new partners. Send us a suggestion.</p>
+          <Button variant="outline" className="border-white/10 hover:bg-white/5 rounded-full px-8"
+            onClick={() => toast.info("Suggestion form coming soon.")}>
+            Suggest a Charity
+          </Button>
+        </div>
       </section>
     </div>
   );

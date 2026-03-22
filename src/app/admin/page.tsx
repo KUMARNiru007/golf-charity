@@ -58,7 +58,7 @@ export default function AdminOverview() {
                   </div>
                   <div>
                     <div className="text-xs text-zinc-500 uppercase tracking-wider mb-0.5">{c.label}</div>
-                    <div className={`text-2xl font-display font-bold font-mono ${loading ? "text-zinc-700 animate-pulse" : c.color}`}>
+                    <div className={`text-2xl font-mono font-bold ${loading ? "text-zinc-700 animate-pulse" : c.color}`}>
                       {loading ? "—" : String(c.value)}
                     </div>
                   </div>
